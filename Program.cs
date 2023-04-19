@@ -46,6 +46,7 @@ namespace CA3
         //--------------------------------------------------- Main Method --------------------------------------------------------------//
         static void Main(string[] args)
         {
+            Header();
             ChooseFile();                                                               // Choose the file
             MenuInput();                                                                // Gives user menu selection
             while (menuChoice != "4")                                                     // Enter switch
@@ -55,18 +56,19 @@ namespace CA3
 
         }
         //---------------------------------------------------   Methods ------------------------------------------------------------------//
-        static void ChooseFile()
+        static void Header()
         {
-           
 
-            
+
+
             DoubleBreakerLine();
             SpaceLine();
             Console.WriteLine("Welcome to our Famine Records Inspection program!");
             SpaceLine();
             DoubleBreakerLine();
-            
-
+        }
+            static void ChooseFile()
+            { 
             bool isValid = false;
             do
             {
@@ -76,7 +78,7 @@ namespace CA3
             Console.WriteLine("1. Famine File");
             Console.WriteLine("2. Famine File Sligo");
             SpaceLine();
-            Console.Write("Please choose which file you would like to inspect:");
+            Console.Write("Please choose which file you would like to inspect: ");
             fileChoice = Console.ReadLine();
             if (IsPresent(fileChoice, "file choice") == true && IsInteger(fileChoice, "File choice") == true && IsWithInRangeInt(fileChoice, "File choice input", 1, 2) == true)
             {
@@ -117,12 +119,13 @@ namespace CA3
                 Console.WriteLine("2. Occupation Report");
                 Console.WriteLine("3. Age Reports");
                 Console.WriteLine("4. Exit");
+                Console.WriteLine("5. Choose Another File");
                 SpaceLine();
                 Console.Write("Enter choice : ");
                 menuChoice = Console.ReadLine();
 
 
-                if (IsPresent(menuChoice, "menu choice") == true && IsInteger(menuChoice, "Menu choice") == true && IsWithInRangeInt(menuChoice, "Menu choice input", 1, 4) == true)
+                if (IsPresent(menuChoice, "menu choice") == true && IsInteger(menuChoice, "Menu choice") == true && IsWithInRangeInt(menuChoice, "Menu choice input", 1, 5) == true)
                 {
                     isValid = true;
 
@@ -160,6 +163,10 @@ namespace CA3
                     break;
                 case "3":
                     Menu3();                                                            // Age Report
+                    break;
+                case "5":
+                    ChooseFile();                                                            // Go back to choose file again
+                    MenuInput();
                     break;
 
                 default:                                                                // If anything apart from 1,2,3 is entered
@@ -607,7 +614,7 @@ namespace CA3
                 SpaceLine();
                 Stars();
                 SpaceLine();
-                Console.WriteLine($"WARNING! {itemName} must be of type integer and from selection of 1,2,3 or 4.");
+                Console.WriteLine($"WARNING! {itemName} must be of type integer and from the selection range requested.");
                 Console.WriteLine("Please enter again below.");
                 SpaceLine();
                 Stars();
@@ -627,7 +634,7 @@ namespace CA3
                 SpaceLine();
                 Stars();
                 SpaceLine();
-                Console.WriteLine($"WARNING! You must enter a value for {itemName}");
+                Console.WriteLine($"WARNING! You must enter a value for {itemName}.");
                 Console.WriteLine("Please enter again below.");
                 SpaceLine();
                 Stars();
@@ -650,7 +657,7 @@ namespace CA3
                 SpaceLine();
                 Stars();
                 SpaceLine();
-                Console.WriteLine($"WARNING! {itemName} must be within the range {min} - {max}");
+                Console.WriteLine($"WARNING! {itemName} must be within the range {min} - {max}.");
                 Console.WriteLine("Please enter again below.");
                 SpaceLine();
                 Stars();
